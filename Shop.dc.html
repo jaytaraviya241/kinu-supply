@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Shop — Kinu Supply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF7F2}a{color:#17181C}a:hover{color:#2B5BE3}@media (prefers-reduced-motion:reduce){*{transition-duration:0.01ms!important}}</style>
+</helmet>
+<div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#17181C;background:#FAF7F2;min-height:100vh;display:flex;flex-direction:column">
+  <dc-import name="KinuChrome" active="shop" hint-size="100%,120px"></dc-import>
+
+  <section style="max-width:1320px;margin:0 auto;width:100%;box-sizing:border-box;padding:36px 24px 20px">
+    <nav aria-label="Breadcrumb" style="font-size:13.5px;color:#6B675F;margin-bottom:16px">
+      <a href="Home.dc.html" style="color:#6B675F;text-decoration:none" style-hover="color:#2B5BE3">Home</a>
+      <span style="margin:0 6px">/</span>
+      <span>{{ crumb }}</span>
+    </nav>
+    <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:750;font-size:clamp(32px,4vw,52px);line-height:1.03;letter-spacing:-0.015em;margin:0 0 12px">{{ title }}</h1>
+    <p style="font-size:16.5px;line-height:1.55;color:#4A463F;margin:0;max-width:600px;text-wrap:pretty">{{ intro }}</p>
+  </section>
+
+  <section style="max-width:1320px;margin:0 auto;width:100%;box-sizing:border-box;padding:8px 24px 88px;flex:1">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 0;border-top:1px solid #E7E1D7;border-bottom:1px solid #E7E1D7;margin-bottom:26px">
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ openSheet }}" style="display:inline-flex;align-items:center;gap:8px;background:#17181C;color:#FAF7F2;border:none;border-radius:3px;padding:12px 18px;font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;min-height:44px">Filter &amp; sort<sc-if value="{{ hasFilters }}" hint-placeholder-val="{{ false }}"><span style="background:#FAF7F2;color:#17181C;border-radius:99px;font-size:12px;font-weight:700;min-width:19px;height:19px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px">{{ filterCount }}</span></sc-if></button>
+      </sc-if>
+      <span style="font-size:14px;color:#6B675F">{{ resultCount }}</span>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <label style="display:inline-flex;align-items:center;gap:10px;font-size:14px;color:#6B675F">Sort by
+          <select value="{{ sort }}" onChange="{{ setSort }}" style="border:1px solid #D8D2C6;border-radius:3px;padding:10px 12px;font-family:'Instrument Sans',sans-serif;font-size:14px;background:#fff;color:#17181C;min-height:44px;cursor:pointer">
+            <option value="featured">Featured</option>
+            <option value="best">Best selling</option>
+            <option value="new">Newest</option>
+            <option value="asc">Price: low to high</option>
+            <option value="desc">Price: high to low</option>
+          </select>
+        </label>
+      </sc-if>
+    </div>
+
+    <div style="display:flex;gap:44px;align-items:flex-start">
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <aside aria-label="Filters" style="width:224px;flex-shrink:0;position:sticky;top:96px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:18px">
+            <span style="font-size:15px;font-weight:700">Filters</span>
+            <sc-if value="{{ hasFilters }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ clearAll }}" style="background:none;border:none;font-size:13px;color:#6B675F;text-decoration:underline;cursor:pointer;padding:4px" style-hover="color:#D8442B">Clear all</button>
+            </sc-if>
+          </div>
+          <sc-for list="{{ facets }}" as="f" hint-placeholder-count="3">
+            <div style="padding:16px 0;border-top:1px solid #EEE9DF">
+              <div style="font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B675F;margin-bottom:12px">{{ f.label }}</div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3">
+                  <button onClick="{{ o.toggle }}" aria-pressed="{{ o.pressed }}" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:7px 2px;font-family:'Instrument Sans',sans-serif;font-size:14.5px;cursor:pointer;text-align:left;color:#17181C;min-height:36px" style-hover="color:#2B5BE3">
+                    <span style="width:17px;height:17px;border-radius:3px;flex-shrink:0;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border:{{ o.boxBorder }};background:{{ o.boxBg }};color:#FAF7F2;font-size:11px;font-weight:700">{{ o.tick }}</span>
+                    <span style="font-weight:{{ o.weight }}">{{ o.name }}</span>
+                    <span style="margin-left:auto;font-size:12.5px;color:#A5A19A">{{ o.count }}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </aside>
+      </sc-if>
+
+      <div style="flex:1;min-width:0">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,44vw),1fr));gap:20px 16px">
+          <sc-for list="{{ products }}" as="p">
+            <a href="{{ p.href }}" style="text-decoration:none;color:inherit;display:block">
+              <div style="position:relative;background-color:#F1EAE0;border-radius:4px;overflow:hidden;aspect-ratio:3/4">
+                <div aria-hidden="true" style="position:absolute;inset:0;background-image:{{ p.hoverCss }};background-size:cover;background-position:center"></div>
+                <div role="img" aria-label="{{ p.alt }}" style="position:absolute;inset:0;background-image:{{ p.imgCss }};background-size:{{ p.bgSize }};background-position:center;background-repeat:no-repeat;opacity:1;transition:opacity 0.2s" style-hover="opacity:{{ p.hoverOpacity }}"></div>
+                <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;top:12px;left:12px;background:{{ p.badgeBg }};color:#FAF7F2;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 10px;border-radius:3px">{{ p.badge }}</span>
+                </sc-if>
+                <button onClick="{{ p.quickAdd }}" aria-label="{{ p.quickLabel }}" style="position:absolute;right:12px;bottom:12px;background:#FAF7F2;border:none;border-radius:3px;padding:11px 16px;font-family:'Instrument Sans',sans-serif;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 2px 10px rgba(23,24,28,0.15);min-height:44px" style-hover="background:#2B5BE3;color:#FAF7F2">{{ p.quickText }}</button>
+              </div>
+              <div style="display:flex;justify-content:space-between;gap:12px;margin-top:12px">
+                <span style="font-size:15px;font-weight:600;line-height:1.35">{{ p.name }}</span>
+                <span style="font-size:15px;font-weight:600;white-space:nowrap">{{ p.priceStr }}</span>
+              </div>
+              <div style="font-size:13.5px;color:#6B675F;margin-top:3px">{{ p.sub }}</div>
+            </a>
+          </sc-for>
+        </div>
+        <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:64px 24px">
+            <img src="uploads/high-res/31-sticker-beagle-in-bag.png" alt="" aria-hidden="true" style="width:160px;height:auto;margin-bottom:18px">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin-bottom:8px">Nothing in this corner of the clubhouse</div>
+            <div style="font-size:15px;color:#6B675F;margin-bottom:20px">Try clearing a filter or two.</div>
+            <button onClick="{{ clearAll }}" style="background:#2B5BE3;color:#FAF7F2;border:none;border-radius:3px;padding:13px 26px;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer">Clear all filters</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ sheet }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="Filter and sort" style="position:fixed;inset:0;z-index:95">
+      <div onClick="{{ closeSheet }}" style="position:absolute;inset:0;background:rgba(23,24,28,0.45)"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;max-height:82vh;background:#FAF7F2;border-radius:12px 12px 0 0;display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #E7E1D7">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px">Filter &amp; sort</span>
+          <button onClick="{{ closeSheet }}" aria-label="Close filters" style="background:none;border:1px solid #D8D2C6;border-radius:3px;width:44px;height:44px;font-size:16px;cursor:pointer">✕</button>
+        </div>
+        <div style="flex:1;overflow:auto;padding:4px 20px 12px">
+          <div style="padding:16px 0;border-bottom:1px solid #EEE9DF">
+            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B675F;margin-bottom:12px">Sort by</div>
+            <select value="{{ sort }}" onChange="{{ setSort }}" style="width:100%;border:1px solid #D8D2C6;border-radius:3px;padding:12px;font-family:'Instrument Sans',sans-serif;font-size:15px;background:#fff;color:#17181C;min-height:48px">
+              <option value="featured">Featured</option>
+              <option value="best">Best selling</option>
+              <option value="new">Newest</option>
+              <option value="asc">Price: low to high</option>
+              <option value="desc">Price: high to low</option>
+            </select>
+          </div>
+          <sc-for list="{{ facets }}" as="f" hint-placeholder-count="3">
+            <div style="padding:16px 0;border-bottom:1px solid #EEE9DF">
+              <div style="font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#6B675F;margin-bottom:12px">{{ f.label }}</div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3">
+                  <button onClick="{{ o.toggle }}" aria-pressed="{{ o.pressed }}" style="border:1px solid {{ o.chipBorder }};background:{{ o.chipBg }};color:{{ o.chipFg }};border-radius:99px;padding:10px 16px;font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;min-height:44px">{{ o.name }} ({{ o.count }})</button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:12px;padding:16px 20px;border-top:1px solid #E7E1D7">
+          <button onClick="{{ clearAll }}" style="flex:1;background:none;border:1.5px solid #17181C;border-radius:3px;padding:14px;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;color:#17181C;min-height:48px">Clear all</button>
+          <button onClick="{{ closeSheet }}" style="flex:2;background:#2B5BE3;color:#FAF7F2;border:none;border-radius:3px;padding:14px;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:48px">Show {{ resultNum }} products</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <dc-import name="KinuFooter" hint-size="100%,540px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { animal: 'all', types: [], collections: [], breeds: [], sort: 'featured', sheet: false, isMobile: false };
+  componentDidMount() {
+    import('./kinu-data.js').then(m => {
+      this.K = m;
+      const u = new URLSearchParams(location.search);
+      const next = {};
+      if (u.get('type')) next.types = [u.get('type')];
+      if (u.get('collection')) next.collections = [u.get('collection')];
+      if (u.get('breed')) next.breeds = [u.get('breed')];
+      if (u.get('sort')) next.sort = u.get('sort');
+      if (u.get('animal')) next.animal = u.get('animal');
+      this.setState(next);
+    });
+    this.mq = window.matchMedia('(max-width:900px)');
+    this.onMq = () => this.setState({ isMobile: this.mq.matches, sheet: this.mq.matches ? this.state.sheet : false });
+    this.onMq();
+    this.mq.addEventListener('change', this.onMq);
+  }
+  componentWillUnmount() { if (this.mq) this.mq.removeEventListener('change', this.onMq); }
+  componentDidUpdate() { document.documentElement.style.overflow = this.state.sheet ? 'hidden' : ''; }
+  matches(p, skip) {
+    const s = this.state;
+    if (skip !== 'animal' && s.animal !== 'all' && p.animal !== s.animal) return false;
+    if (skip !== 'type' && s.types.length && !s.types.includes(p.type)) return false;
+    if (skip !== 'collection' && s.collections.length && !s.collections.includes(p.collection)) return false;
+    if (skip !== 'breed' && s.breeds.length && !s.breeds.includes(p.breed)) return false;
+    return true;
+  }
+  renderVals() {
+    const K = this.K, s = this.state;
+    const all = K ? K.PRODUCTS : [];
+    let list = all.filter(p => this.matches(p, null));
+    const order = { featured: null, best: ['dachshund-rc-tee'], new: null };
+    if (s.sort === 'asc') list = [...list].sort((a, b) => a.price - b.price);
+    else if (s.sort === 'desc') list = [...list].sort((a, b) => b.price - a.price);
+    else if (s.sort === 'new') list = [...list].sort((a, b) => (b.badge === 'New') - (a.badge === 'New'));
+    else if (s.sort === 'best') list = [...list].sort((a, b) => (b.badge === 'Best seller') - (a.badge === 'Best seller'));
+    const products = list.map(p => ({
+      name: p.name, priceStr: (p.from ? 'from ' : '') + (K ? K.money(p.price) : ''),
+      imgCss: "url('" + p.img + "')", hoverCss: p.hover ? "url('" + p.hover + "')" : false, hoverOpacity: p.hover ? '0' : '1',
+      bgSize: p.contain ? '70%' : 'cover',
+      alt: p.name + (p.type === 'T-shirt' ? ' — hover to see the illustrated back print' : ''),
+      href: 'Product.dc.html?id=' + p.id,
+      badge: p.badge || false, badgeBg: p.badge === 'New' ? '#6FA25C' : '#17181C',
+      sub: p.variants ? (p.variantLabel === 'Breed' ? p.variants.length + ' breeds' : p.variants.join(' · ')) : p.type,
+      quickText: p.sizes ? 'Quick add · M' : 'Quick add',
+      quickLabel: 'Quick add ' + p.name,
+      quickAdd: (e) => { if (e) e.preventDefault(); K.addToCart({ id: p.id, variant: p.variants ? p.variants[0] : null, size: p.sizes ? 'M' : null }); }
+    }));
+    const mkFacet = (label, key, values, selected, toggle) => ({
+      label,
+      options: values.map(v => {
+        const on = selected.includes(v);
+        const count = all.filter(p => this.matches(p, key) && (key === 'animal' ? (v === 'All' || p.animal === v.toLowerCase()) : p[key === 'type' ? 'type' : key === 'collection' ? 'collection' : 'breed'] === v)).length;
+        return {
+          name: v, count, pressed: on ? 'true' : 'false',
+          tick: on ? '✓' : '', weight: on ? '650' : '450',
+          boxBorder: on ? '1px solid #2B5BE3' : '1px solid #C9C3B7', boxBg: on ? '#2B5BE3' : '#fff',
+          chipBorder: on ? '#2B5BE3' : '#D8D2C6', chipBg: on ? '#2B5BE3' : '#FAF7F2', chipFg: on ? '#FAF7F2' : '#17181C',
+          toggle: () => toggle(v, on)
+        };
+      })
+    });
+    const toggleArr = (field) => (v, on) => this.setState({ [field]: on ? s[field].filter(x => x !== v) : s[field].concat(v) });
+    const facets = [
+      { ...mkFacet('Animal', 'animal', ['All', 'Dog', 'Cat'], [s.animal === 'all' ? 'All' : s.animal === 'dog' ? 'Dog' : 'Cat'], (v) => this.setState({ animal: v === 'All' ? 'all' : v.toLowerCase() })) },
+      mkFacet('Product type', 'type', ['T-shirt', 'Sticker', 'Magnet', 'Bag'], s.types, toggleArr('types')),
+      mkFacet('Collection', 'collection', ['Recreational Club', 'Cat Club', 'Encyclopedia Series', 'Collectibles'], s.collections, toggleArr('collections')),
+      mkFacet('Breed', 'breed', ['Dachshund', 'Poodle', 'Cat Club', 'Various'], s.breeds, toggleArr('breeds'))
+    ];
+    const filterCount = (s.animal !== 'all' ? 1 : 0) + s.types.length + s.collections.length + s.breeds.length;
+    const isTees = s.types.length === 1 && s.types[0] === 'T-shirt';
+    return {
+      title: isTees ? 'Kinu Supply T-shirts' : s.collections.length === 1 ? s.collections[0] : 'Shop the clubhouse',
+      crumb: isTees ? 'T-shirts' : 'Shop',
+      intro: isTees
+        ? 'Graphic tees featuring favourite breeds, illustrated in Singapore for people who wear their pet obsession proudly.'
+        : 'Every piece starts as an original illustration at the Singapore studio — tees, stickers, magnets and bags for proud pet people.',
+      products, empty: !!K && products.length === 0,
+      resultCount: K ? products.length + (products.length === 1 ? ' product' : ' products') : '…',
+      resultNum: products.length,
+      facets, hasFilters: filterCount > 0, filterCount,
+      clearAll: () => this.setState({ animal: 'all', types: [], collections: [], breeds: [] }),
+      sort: s.sort, setSort: e => this.setState({ sort: e.target.value }),
+      isMobile: s.isMobile, isDesktop: !s.isMobile,
+      sheet: s.sheet, openSheet: () => this.setState({ sheet: true }), closeSheet: () => this.setState({ sheet: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

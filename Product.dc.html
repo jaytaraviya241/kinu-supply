@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Product — Kinu Supply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF7F2}a{color:#17181C}a:hover{color:#2B5BE3}@media (prefers-reduced-motion:reduce){*{transition-duration:0.01ms!important}}</style>
+</helmet>
+<div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#17181C;background:#FAF7F2">
+  <dc-import name="KinuChrome" active="shop" hint-size="100%,120px"></dc-import>
+
+  <section style="max-width:1320px;margin:0 auto;padding:28px 24px 72px">
+    <nav aria-label="Breadcrumb" style="font-size:13.5px;color:#6B675F;margin-bottom:22px">
+      <a href="Home.dc.html" style="color:#6B675F;text-decoration:none" style-hover="color:#2B5BE3">Home</a>
+      <span style="margin:0 6px">/</span>
+      <a href="Shop.dc.html" style="color:#6B675F;text-decoration:none" style-hover="color:#2B5BE3">Shop</a>
+      <span style="margin:0 6px">/</span>
+      <span>{{ name }}</span>
+    </nav>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));gap:48px;align-items:start">
+      <div>
+        <div style="position:relative;background:#F1EAE0;border-radius:4px;overflow:hidden;aspect-ratio:4/5">
+          <div role="img" aria-label="{{ mainAlt }}" style="position:absolute;inset:0;background-image:{{ mainCss }};background-size:{{ mainBgSize }};background-position:center;background-repeat:no-repeat"></div>
+          <button onClick="{{ prevImg }}" aria-label="Previous image" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:44px;height:44px;border:none;border-radius:99px;background:rgba(250,247,242,0.92);font-size:17px;cursor:pointer;box-shadow:0 2px 8px rgba(23,24,28,0.12)" style-hover="background:#2B5BE3;color:#FAF7F2">‹</button>
+          <button onClick="{{ nextImg }}" aria-label="Next image" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:44px;height:44px;border:none;border-radius:99px;background:rgba(250,247,242,0.92);font-size:17px;cursor:pointer;box-shadow:0 2px 8px rgba(23,24,28,0.12)" style-hover="background:#2B5BE3;color:#FAF7F2">›</button>
+          <span style="position:absolute;bottom:12px;right:14px;background:rgba(23,24,28,0.7);color:#FAF7F2;font-size:12.5px;font-weight:600;border-radius:99px;padding:5px 11px">{{ galleryPos }}</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:12px;overflow-x:auto;padding-bottom:4px">
+          <sc-for list="{{ thumbs }}" as="t">
+            <button onClick="{{ t.pick }}" aria-label="{{ t.label }}" style="width:72px;height:90px;flex-shrink:0;border-radius:3px;padding:0;cursor:pointer;background-color:#F1EAE0;border:2px solid {{ t.border }};background-image:{{ t.css }};background-size:cover;background-position:center"></button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="position:sticky;top:96px">
+        <sc-if value="{{ badge }}" hint-placeholder-val="{{ false }}">
+          <span style="display:inline-block;background:#17181C;color:#FAF7F2;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 10px;border-radius:3px;margin-bottom:14px">{{ badge }}</span>
+        </sc-if>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:730;font-size:clamp(28px,3.2vw,40px);line-height:1.06;letter-spacing:-0.01em;margin:0 0 10px;text-wrap:pretty">{{ name }}</h1>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:24px;font-weight:650;margin-bottom:14px">{{ priceStr }}</div>
+        <p style="font-size:16px;line-height:1.6;color:#4A463F;margin:0 0 26px;max-width:460px;text-wrap:pretty">{{ blurb }}</p>
+
+        <sc-if value="{{ hasVariants }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-bottom:22px">
+            <div style="font-size:14px;font-weight:700;margin-bottom:10px">{{ variantLabel }}: <span style="font-weight:500;color:#6B675F">{{ variant }}</span></div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ variantOpts }}" as="v" hint-placeholder-count="2">
+                <button onClick="{{ v.pick }}" aria-pressed="{{ v.pressed }}" style="border:1.5px solid {{ v.border }};background:{{ v.bg }};color:{{ v.fg }};border-radius:3px;padding:11px 18px;font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;min-height:44px">{{ v.name }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ hasSizes }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-bottom:22px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;max-width:460px">
+              <span style="font-size:14px;font-weight:700">Size: <span style="font-weight:500;color:#6B675F">{{ size }}</span></span>
+              <button onClick="{{ openSizeGuide }}" style="background:none;border:none;font-size:13.5px;text-decoration:underline;cursor:pointer;color:#17181C;padding:4px" style-hover="color:#2B5BE3">Size guide</button>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ sizeOpts }}" as="v" hint-placeholder-count="4">
+                <button onClick="{{ v.pick }}" aria-pressed="{{ v.pressed }}" style="border:1.5px solid {{ v.border }};background:{{ v.bg }};color:{{ v.fg }};border-radius:3px;min-width:54px;padding:11px 0;font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;min-height:44px">{{ v.name }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;gap:12px;align-items:stretch;max-width:460px;margin-bottom:16px">
+          <div style="display:inline-flex;align-items:center;border:1.5px solid #D8D2C6;border-radius:3px;background:#fff">
+            <button onClick="{{ decQty }}" aria-label="Decrease quantity" style="width:42px;height:100%;min-height:52px;background:none;border:none;font-size:17px;cursor:pointer" style-hover="background:#F1EAE0">−</button>
+            <span aria-live="polite" style="min-width:28px;text-align:center;font-size:15.5px;font-weight:700">{{ qty }}</span>
+            <button onClick="{{ incQty }}" aria-label="Increase quantity" style="width:42px;height:100%;min-height:52px;background:none;border:none;font-size:17px;cursor:pointer" style-hover="background:#F1EAE0">+</button>
+          </div>
+          <button onClick="{{ addToCart }}" style="flex:1;background:#2B5BE3;color:#FAF7F2;border:none;border-radius:3px;padding:15px;font-family:'Instrument Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;min-height:52px" style-hover="background:#1E48C4">Add to cart — {{ lineTotal }}</button>
+        </div>
+        <div style="font-size:13.5px;color:#6B675F;line-height:1.6;max-width:460px;margin-bottom:26px">Free Singapore shipping over S$100 · Free studio pickup at 37 Tannery Lane · Secure checkout</div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px;font-weight:600;color:#4A463F;max-width:460px;padding:16px 0;border-top:1px solid #E7E1D7;border-bottom:1px solid #E7E1D7;margin-bottom:8px">
+          <span style="display:flex;align-items:center;gap:7px"><span style="width:5px;height:5px;border-radius:99px;background:#2B5BE3"></span>Designed in Singapore</span>
+          <span style="display:flex;align-items:center;gap:7px"><span style="width:5px;height:5px;border-radius:99px;background:#6FA25C"></span>Original illustrated artwork</span>
+          <span style="display:flex;align-items:center;gap:7px"><span style="width:5px;height:5px;border-radius:99px;background:#C97A54"></span>Exchange support</span>
+        </div>
+
+        <div style="max-width:460px">
+          <sc-for list="{{ sections }}" as="a" hint-placeholder-count="4">
+            <div style="border-bottom:1px solid #E7E1D7" id="{{ a.id }}">
+              <button onClick="{{ a.toggle }}" aria-expanded="{{ a.expanded }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;background:none;border:none;padding:16px 2px;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;color:#17181C;text-align:left;min-height:48px" style-hover="color:#2B5BE3">
+              <span>{{ a.title }}</span><span style="font-size:18px;font-weight:400;color:#6B675F">{{ a.icon }}</span>
+              </button>
+              <sc-if value="{{ a.open }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:14.5px;line-height:1.65;color:#4A463F;padding:0 2px 18px;white-space:pre-line">{{ a.body }}</div>
+              </sc-if>
+            </div>
+          </sc-for>
+          <div style="font-size:13px;color:#A5A19A;padding:16px 2px">Reviews will appear here once the store's review app is connected — no placeholder stars, promise.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Related products" style="max-width:1320px;margin:0 auto;padding:0 24px 96px">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:720;font-size:clamp(24px,2.6vw,34px);line-height:1.1;margin:0 0 24px;letter-spacing:-0.01em">Completes the set</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,44vw),1fr));gap:20px 16px">
+      <sc-for list="{{ related }}" as="p">
+        <a href="{{ p.href }}" style="text-decoration:none;color:inherit;display:block">
+          <div role="img" aria-label="{{ p.name }}" style="position:relative;background-color:#F1EAE0;border-radius:4px;overflow:hidden;aspect-ratio:3/4;background-image:{{ p.imgCss }};background-size:{{ p.bgSize }};background-position:center;background-repeat:no-repeat">
+            <button onClick="{{ p.quickAdd }}" aria-label="{{ p.quickLabel }}" style="position:absolute;right:12px;bottom:12px;background:#FAF7F2;border:none;border-radius:3px;padding:11px 16px;font-family:'Instrument Sans',sans-serif;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 2px 10px rgba(23,24,28,0.15);min-height:44px" style-hover="background:#2B5BE3;color:#FAF7F2">Quick add</button>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;margin-top:12px">
+            <span style="font-size:15px;font-weight:600;line-height:1.35">{{ p.name }}</span>
+            <span style="font-size:15px;font-weight:600;white-space:nowrap">{{ p.priceStr }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(250,247,242,0.97);border-top:1px solid #E7E1D7;padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:14px;backdrop-filter:blur(8px)">
+      <div style="min-width:0">
+        <div style="font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:38vw">{{ name }}</div>
+        <div style="font-size:13px;color:#6B675F">{{ selSummary }}</div>
+      </div>
+      <button onClick="{{ addToCart }}" style="flex:1;background:#2B5BE3;color:#FAF7F2;border:none;border-radius:3px;padding:14px;font-family:'Instrument Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;min-height:48px" style-hover="background:#1E48C4">Add to cart — {{ lineTotal }}</button>
+    </div>
+  </sc-if>
+
+  <dc-import name="KinuFooter" hint-size="100%,540px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { id: 'dachshund-rc-tee', imgIdx: 0, variant: null, size: null, qty: 1, open: 'story', isMobile: false };
+  componentDidMount() {
+    import('./kinu-data.js').then(m => {
+      this.K = m;
+      const u = new URLSearchParams(location.search);
+      const id = u.get('id');
+      const p = m.product(id) || m.PRODUCTS[0];
+      this.setState({
+        id: p.id,
+        variant: u.get('v') && p.variants && p.variants.includes(u.get('v')) ? u.get('v') : (p.variants ? p.variants[0] : null),
+        size: p.sizes ? 'M' : null
+      });
+      document.title = p.name + ' — Kinu Supply';
+    });
+    this.mq = window.matchMedia('(max-width:900px)');
+    this.onMq = () => this.setState({ isMobile: this.mq.matches });
+    this.onMq();
+    this.mq.addEventListener('change', this.onMq);
+  }
+  componentWillUnmount() { if (this.mq) this.mq.removeEventListener('change', this.onMq); }
+  content(p) {
+    const ship = 'Orders ship from our Singapore studio within 2–4 working days. Free local shipping over S$100, or choose free studio pickup at 37 Tannery Lane #06-05 — we will email you when it is ready.';
+    const exch = 'Wrong size or changed your mind? Unworn items with tags can be exchanged within 14 days at the studio or by mail. If anything arrives damaged or incorrect, we will make it right first — email hello@kinu.supply.';
+    const secs = [['story', 'Product story', p.blurb + (p.type === 'T-shirt' ? '\n\nEvery Kinu tee starts as an original illustration drawn from real-life observation at the Singapore studio — then printed with intricate detail so the whole club fits on one garment.' : '')]];
+    if (p.type === 'T-shirt') {
+      secs.push(
+        ['fit', 'Size & fit', 'Oversize, drop-shoulder cut with a reinforced collar. Stick to your regular size for a slightly oversized fit; size up for the full oversized look. Available in S–XL.\n\nA full measurement chart ships with the size guide page in the next design round.'],
+        ['fabric', 'Fabric & print', '100% premium combed cotton — softer than regular cotton against the skin. Illustrations are applied with a detailed heat-transfer print.'],
+        ['care', 'Care instructions', 'Machine wash cold, inside out, with similar colors on a gentle cycle. Air dry in the shade. Iron inside out on low heat and avoid the print area — the artwork stays crisp for years.']
+      );
+    } else if (p.type === 'Sticker') {
+      secs.push(['details', 'Details', 'Gloss-laminated and waterproof — made for laptops, water bottles and anywhere the club should be represented. Price is per piece.']);
+    } else if (p.type === 'Magnet') {
+      secs.push(['details', 'Details', 'The same illustrated breeds as our sticker series, made fridge-grade. Price is per piece.']);
+    } else if (p.type === 'Bag') {
+      secs.push(
+        ['details', 'Size & material', '53cm long, 38cm high, with a 26cm shoulder drop. Folds into a 13cm × 13cm pouch. 210T polyester.'],
+        ['care', 'Care instructions', 'Cold wash with mild detergent, no bleach. Air dry only — do not tumble dry. Low-heat iron with a cloth if required.']
+      );
+    }
+    secs.push(['shipping', 'Shipping & studio pickup', ship], ['exchanges', 'Exchanges', exch]);
+    return secs;
+  }
+  renderVals() {
+    const K = this.K, s = this.state;
+    const p = K ? (K.product(s.id) || K.PRODUCTS[0]) : null;
+    if (!p) {
+      const noop = () => {};
+      return { name: '', blurb: '', badge: false, priceStr: '', mainCss: false, mainAlt: '', mainBgSize: 'cover', galleryPos: '', qty: 1, lineTotal: '', selSummary: '', variantLabel: '', variant: '', size: '', hasVariants: false, hasSizes: false, thumbs: [], sections: [], related: [], variantOpts: [], sizeOpts: [], isMobile: this.state.isMobile, prevImg: noop, nextImg: noop, openSizeGuide: noop, incQty: noop, decQty: noop, addToCart: noop };
+    }
+    const gallery = p.gallery;
+    const idx = Math.min(s.imgIdx, gallery.length - 1);
+    const opt = (list, cur, field) => list.map(v => {
+      const on = v === cur;
+      return {
+        name: v, pressed: on ? 'true' : 'false',
+        border: on ? '#2B5BE3' : '#D8D2C6', bg: on ? '#2B5BE3' : '#FAF7F2', fg: on ? '#FAF7F2' : '#17181C',
+        pick: () => this.setState({ [field]: v })
+      };
+    });
+    const lineTotal = K.money(p.price * s.qty);
+    const related = (p.addOns || []).map(id => K.product(id)).filter(Boolean).slice(0, 3).map(r => ({
+      name: r.name, priceStr: (r.from ? 'from ' : '') + K.money(r.price),
+      imgCss: "url('" + r.img + "')", bgSize: r.contain ? '70%' : 'cover',
+      href: 'Product.dc.html?id=' + r.id, quickLabel: 'Quick add ' + r.name,
+      quickAdd: (e) => { if (e) e.preventDefault(); K.addToCart({ id: r.id, variant: r.variants ? r.variants[0] : null, size: r.sizes ? 'M' : null }); }
+    }));
+    return {
+      name: p.name, blurb: p.blurb, badge: p.badge || false,
+      priceStr: (p.from ? 'from ' : '') + K.money(p.price),
+      mainCss: "url('" + gallery[idx][0] + "')", mainAlt: gallery[idx][1],
+      mainBgSize: p.contain ? '75%' : 'cover',
+      galleryPos: (idx + 1) + ' / ' + gallery.length,
+      prevImg: () => this.setState({ imgIdx: (idx - 1 + gallery.length) % gallery.length }),
+      nextImg: () => this.setState({ imgIdx: (idx + 1) % gallery.length }),
+      thumbs: gallery.map((g, i) => ({
+        css: "url('" + g[0] + "')", label: 'View image ' + (i + 1), border: i === idx ? '#2B5BE3' : 'transparent',
+        pick: () => this.setState({ imgIdx: i })
+      })),
+      hasVariants: !!p.variants, variantLabel: p.variantLabel || '', variant: s.variant || '',
+      variantOpts: p.variants ? opt(p.variants, s.variant, 'variant') : [],
+      hasSizes: !!p.sizes, size: s.size || '',
+      sizeOpts: p.sizes ? opt(p.sizes, s.size, 'size') : [],
+      openSizeGuide: () => this.setState({ open: 'fit' }),
+      qty: s.qty,
+      incQty: () => this.setState({ qty: s.qty + 1 }),
+      decQty: () => this.setState({ qty: Math.max(1, s.qty - 1) }),
+      lineTotal,
+      selSummary: [s.variant, s.size, 'Qty ' + s.qty].filter(Boolean).join(' · '),
+      addToCart: () => K.addToCart({ id: p.id, variant: s.variant, size: s.size, qty: s.qty }),
+      sections: this.content(p).map(([id, title, body]) => ({
+        id, title, body,
+        open: s.open === id, expanded: s.open === id ? 'true' : 'false',
+        icon: s.open === id ? '−' : '+',
+        toggle: () => this.setState({ open: s.open === id ? null : id })
+      })),
+      related, isMobile: s.isMobile
+    };
+  }
+}
+</script>
+</body>
+</html>

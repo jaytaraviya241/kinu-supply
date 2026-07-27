@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Breed Club — Kinu Supply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF7F2}a{color:#17181C}a:hover{color:#2B5BE3}@media (prefers-reduced-motion:reduce){*{transition-duration:0.01ms!important}}</style>
+</helmet>
+<div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#17181C;background:#FAF7F2">
+  <dc-import name="KinuChrome" active="breed" hint-size="100%,120px"></dc-import>
+
+  <section style="background:{{ heroBg }}">
+    <div style="max-width:1320px;margin:0 auto;padding:48px 24px 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr));gap:40px;align-items:center">
+      <div>
+        <nav aria-label="Breadcrumb" style="font-size:13.5px;color:#6B675F;margin-bottom:20px">
+          <a href="Home.dc.html" style="color:#6B675F;text-decoration:none" style-hover="color:#2B5BE3">Home</a>
+          <span style="margin:0 6px">/</span>
+          <a href="Home.dc.html#find-your-breed" style="color:#6B675F;text-decoration:none" style-hover="color:#2B5BE3">Breed finder</a>
+          <span style="margin:0 6px">/</span>
+          <span>{{ title }}</span>
+        </nav>
+        <div style="font-size:13px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2B5BE3;margin-bottom:14px">Members only (and their humans)</div>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:750;font-size:clamp(36px,4.4vw,58px);line-height:1.02;letter-spacing:-0.015em;margin:0 0 18px">{{ title }}</h1>
+        <p style="font-size:17px;line-height:1.6;color:#4A463F;margin:0 0 28px;max-width:480px;text-wrap:pretty">{{ intro }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#breed-products" style="background:#2B5BE3;color:#FAF7F2;text-decoration:none;border-radius:3px;padding:15px 28px;font-size:15.5px;font-weight:700;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center" style-hover="background:#1E48C4;color:#FAF7F2">Shop the club</a>
+          <a href="#breed-drop" style="background:none;color:#17181C;border:1.5px solid #17181C;text-decoration:none;border-radius:3px;padding:15px 28px;font-size:15.5px;font-weight:700;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center" style-hover="border-color:#2B5BE3;color:#2B5BE3">Get drop alerts</a>
+        </div>
+      </div>
+      <div style="position:relative;justify-self:end;width:100%;max-width:520px">
+        <div style="aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:#F1EAE0">
+          <div role="img" aria-label="{{ heroAlt }}" style="width:100%;height:100%;background-image:{{ heroCss }};background-size:cover;background-position:center"></div>
+        </div>
+        <span aria-hidden="true" style="position:absolute;left:-30px;bottom:-24px;width:clamp(100px,11vw,150px);aspect-ratio:4/3;background-image:{{ artCss }};background-size:contain;background-position:center bottom;background-repeat:no-repeat;transform:rotate(-7deg);filter:drop-shadow(0 6px 14px rgba(23,24,28,0.18))"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="breed-products" aria-label="Club products" style="max-width:1320px;margin:0 auto;padding:64px 24px 40px">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:720;font-size:clamp(26px,3vw,38px);line-height:1.08;margin:0 0 26px;letter-spacing:-0.01em">The {{ shortName }} kit</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,44vw),1fr));gap:20px 16px">
+      <sc-for list="{{ products }}" as="p">
+        <a href="{{ p.href }}" style="text-decoration:none;color:inherit;display:block">
+          <div style="position:relative;background-color:#F1EAE0;border-radius:4px;overflow:hidden;aspect-ratio:3/4">
+            <div aria-hidden="true" style="position:absolute;inset:0;background-image:{{ p.hoverCss }};background-size:cover;background-position:center"></div>
+            <div role="img" aria-label="{{ p.alt }}" style="position:absolute;inset:0;background-image:{{ p.imgCss }};background-size:{{ p.bgSize }};background-position:center;background-repeat:no-repeat;opacity:1;transition:opacity 0.2s" style-hover="opacity:{{ p.hoverOpacity }}"></div>
+            <span style="position:absolute;top:12px;left:12px;background:#FAF7F2;color:#17181C;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 10px;border-radius:3px">{{ p.role }}</span>
+            <button onClick="{{ p.quickAdd }}" aria-label="{{ p.quickLabel }}" style="position:absolute;right:12px;bottom:12px;background:#FAF7F2;border:none;border-radius:3px;padding:11px 16px;font-family:'Instrument Sans',sans-serif;font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 2px 10px rgba(23,24,28,0.15);min-height:44px" style-hover="background:#2B5BE3;color:#FAF7F2">{{ p.quickText }}</button>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;margin-top:12px">
+            <span style="font-size:15px;font-weight:600;line-height:1.35">{{ p.name }}</span>
+            <span style="font-size:15px;font-weight:600;white-space:nowrap">{{ p.priceStr }}</span>
+          </div>
+          <div style="font-size:13.5px;color:#6B675F;margin-top:3px">{{ p.sub }}</div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section aria-label="Gift idea" style="max-width:1320px;margin:0 auto;padding:24px 24px 64px">
+    <div style="background:#E7D6C4;border-radius:4px;padding:clamp(28px,3.5vw,44px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div style="max-width:560px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#A85B38;margin-bottom:10px">Gifting a {{ shortName }} person?</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(22px,2.4vw,30px);line-height:1.15">Tee + matching sticker is the classic move. We'll pack it nicely.</div>
+      </div>
+      <a href="{{ giftHref }}" style="background:#17181C;color:#FAF7F2;text-decoration:none;border-radius:3px;padding:15px 28px;font-size:15.5px;font-weight:700;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center" style-hover="background:#A85B38;color:#FAF7F2">Build the gift</a>
+    </div>
+  </section>
+
+  <section id="breed-drop" aria-label="Breed drop alerts" style="border-top:1px solid #E7E1D7;background:#F5F0E8">
+    <div style="max-width:680px;margin:0 auto;padding:64px 24px;text-align:center">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:720;font-size:clamp(26px,3vw,36px);line-height:1.1;margin:0 0 12px;letter-spacing:-0.01em">Get the next {{ shortName }} drop first.</h2>
+      <p style="font-size:15.5px;color:#4A463F;line-height:1.6;margin:0 0 24px">New colourways, restocks and new {{ shortName }} pieces — straight to your inbox, nothing else.</p>
+      <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+          <input type="email" value="{{ email }}" onChange="{{ setEmail }}" placeholder="you@example.com" aria-label="Email address" style="flex:1;min-width:240px;max-width:360px;border:1px solid #D8D2C6;border-radius:3px;padding:14px 16px;font-family:'Instrument Sans',sans-serif;font-size:15.5px;background:#fff;color:#17181C;min-height:48px;box-sizing:border-box">
+          <button onClick="{{ join }}" style="background:#2B5BE3;color:#FAF7F2;border:none;border-radius:3px;padding:14px 28px;font-family:'Instrument Sans',sans-serif;font-size:15.5px;font-weight:700;cursor:pointer;min-height:48px" style-hover="background:#1E48C4">Notify me</button>
+        </div>
+        <sc-if value="{{ emailErr }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="font-size:14px;color:#D8442B;margin-top:12px">Please enter a valid email address.</div>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#DCE9D5;color:#2E5222;border-radius:4px;padding:20px;font-size:15.5px;font-weight:600">You're on the {{ shortName }} list. First dibs, incoming.</div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section aria-label="Other clubs" style="max-width:1320px;margin:0 auto;padding:56px 24px 80px">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:720;font-size:clamp(24px,2.6vw,32px);line-height:1.1;margin:0 0 22px;letter-spacing:-0.01em">Other clubs to visit</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <sc-for list="{{ others }}" as="o">
+        <a href="{{ o.href }}" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;background:#F1EAE0;border:1px solid transparent;border-radius:99px;padding:10px 20px 10px 12px;font-size:14.5px;font-weight:650;color:#17181C;min-height:48px;box-sizing:border-box;transition:border-color 0.18s" style-hover="border-color:#2B5BE3">
+          <span aria-hidden="true" style="width:34px;height:34px;border-radius:{{ o.artRadius }};background-image:{{ o.artCss }};background-size:{{ o.artSize }};background-position:center;background-repeat:no-repeat"></span>
+          <span>{{ o.n }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <dc-import name="KinuFooter" hint-size="100%,540px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { breed: 'dachshund', email: '', joined: false, emailErr: false };
+  CFG = {
+    dachshund: {
+      title: 'Dachshund Club', shortName: 'Dachshund', heroBg: '#F5F0E8',
+      art: 'uploads/high-res/33-sticker-dachshund-tennis.png',
+      heroImg: 'uploads/high-res/11-dachshund-recreational-lifestyle-back.jpg',
+      heroAlt: 'Person carrying a dachshund, wearing the illustrated Dachshund Recreational Club tee',
+      intro: 'Long dog, big personality. The Dachshund Recreational Club has a pool, a golf course, a tennis court and a hot dog stand — and matching merch for the humans.',
+      items: [['dachshund-rc-tee', 'Black', 'The hero'], ['dog-stickers', 'Dachshund', 'Matching sticker'], ['dog-magnets', 'Dachshund', 'Fridge duty'], ['dog-bag', null, 'Carries snacks']],
+      gift: 'Gifts.dc.html?breed=dachshund'
+    },
+    poodle: {
+      title: 'Poodle Club', shortName: 'Poodle', heroBg: '#F5F0E8',
+      art: 'uploads/high-res/37-sticker-poodle-trio.png',
+      heroImg: 'uploads/high-res/08-poodle-park-lifestyle-back.jpg',
+      heroAlt: 'Customer wearing the white Poodle Park tee with cap',
+      intro: 'A whole playground of poodles — toy, miniature and standard, on swings, slides and sandpits. Welcome to Poodle Park.',
+      items: [['poodle-park-tee', 'White', 'The hero'], ['dog-stickers', 'Poodle', 'Matching sticker'], ['dog-bag', null, 'Carries snacks']],
+      gift: 'Gifts.dc.html?breed=poodle'
+    },
+    catclub: {
+      title: 'Cat Club', shortName: 'Cat Club', heroBg: '#F5F0E8',
+      art: null,
+      heroImg: 'uploads/high-res/16-cat-club-lifestyle-back.jpg',
+      heroAlt: 'Customer wearing the Cat Club tee, illustrated back print visible',
+      intro: 'For the feline faithful. Beautifully illustrated cats in boxes, on shelves, and exactly where they should not be.',
+      items: [['cat-club-tee', 'White', 'The hero'], ['cat-stickers', null, 'Matching sticker'], ['cat-bag', null, 'Grocery duty']],
+      gift: 'Gifts.dc.html?breed=catclub'
+    }
+  };
+  componentDidMount() {
+    import('./kinu-data.js').then(m => {
+      this.K = m;
+      const u = new URLSearchParams(location.search);
+      const breed = this.CFG[u.get('breed')] ? u.get('breed') : 'dachshund';
+      this.setState({ breed });
+      document.title = this.CFG[breed].title + ' — Kinu Supply';
+    });
+  }
+  renderVals() {
+    const K = this.K, s = this.state, c = this.CFG[s.breed];
+    const products = K ? c.items.map(([id, variant, role]) => {
+      const p = K.product(id);
+      return {
+        name: p.name, priceStr: (p.from ? 'from ' : '') + K.money(p.price),
+        imgCss: "url('" + p.img + "')", hoverCss: p.hover ? "url('" + p.hover + "')" : false, hoverOpacity: p.hover ? '0' : '1',
+        bgSize: p.contain ? '70%' : 'cover',
+        alt: p.name, role,
+        href: 'Product.dc.html?id=' + p.id + (variant ? '&v=' + encodeURIComponent(variant) : ''),
+        sub: variant || p.type,
+        quickText: p.sizes ? 'Quick add · M' : 'Quick add',
+        quickLabel: 'Quick add ' + p.name,
+        quickAdd: (e) => { if (e) e.preventDefault(); K.addToCart({ id: p.id, variant: variant || (p.variants ? p.variants[0] : null), size: p.sizes ? 'M' : null }); }
+      };
+    }) : [];
+    const others = (K ? K.BREEDS : []).filter(b => b.n.toLowerCase().replace(' ', '') !== c.shortName.toLowerCase().replace(' ', '')).slice(0, 8).map(b => {
+      const photo = b.art.endsWith('.jpg');
+      return { ...b, artCss: "url('" + b.art + "')", artSize: photo ? 'cover' : 'contain', artRadius: photo ? '99px' : '0' };
+    });
+    return {
+      title: c.title, shortName: c.shortName, intro: c.intro, heroBg: c.heroBg,
+      heroCss: "url('" + c.heroImg + "')", heroAlt: c.heroAlt, artCss: c.art ? "url('" + c.art + "')" : false,
+      products, giftHref: c.gift, others,
+      email: s.email, setEmail: e => this.setState({ email: e.target.value, emailErr: false }),
+      emailErr: s.emailErr,
+      join: () => { /\S+@\S+\.\S+/.test(s.email) ? this.setState({ joined: true }) : this.setState({ emailErr: true }); },
+      notJoined: !s.joined, joined: s.joined
+    };
+  }
+}
+</script>
+</body>
+</html>

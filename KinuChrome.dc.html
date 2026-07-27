@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0;background:#FAF7F2}a{color:#17181C}a:hover{color:#2B5BE3}</style>
+</helmet>
+<div style="font-family:'Instrument Sans',system-ui,sans-serif;color:#17181C">
+  <sc-if value="{{ showBar }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#17181C;color:#FAF7F2;font-size:13.5px;line-height:1.4;padding:9px 44px;text-align:center;position:relative">
+      <span>Free Singapore shipping over S$100 · Studio pickup at 37 Tannery Lane</span>
+      <button onClick="{{ dismissBar }}" aria-label="Dismiss announcement" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:#FAF7F2;font-size:16px;cursor:pointer;padding:6px 10px;line-height:1" style-hover="color:#B9C6F2">✕</button>
+    </div>
+  </sc-if>
+  <header style="position:sticky;top:0;z-index:60;background:rgba(250,247,242,0.95);backdrop-filter:blur(10px) saturate(1.1);border-bottom:1px solid #E7E1D7">
+    <div style="max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:{{ headerPad }} 24px;transition:padding 0.25s">
+      <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ openNav }}" aria-label="Open menu" style="background:none;border:1px solid #D8D2C6;border-radius:3px;width:44px;height:44px;cursor:pointer;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center">
+          <span style="display:block;width:18px;height:2px;background:#17181C"></span>
+          <span style="display:block;width:18px;height:2px;background:#17181C"></span>
+          <span style="display:block;width:18px;height:2px;background:#17181C"></span>
+        </button>
+      </sc-if>
+      <a href="Home.dc.html" aria-label="Kinu Supply home" style="display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:8px">
+        <img src="uploads/high-res/06-logo-blue-highres.png" alt="Kinu Supply logo" style="height:26px;width:auto;display:block">
+        <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.08em;color:#17181C;text-transform:uppercase">Supply</span>
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Main" style="display:flex;gap:26px;font-size:15px;font-weight:500;white-space:nowrap">
+          <a href="Shop.dc.html" style="text-decoration:none;padding:6px 0">Shop</a>
+          <a href="Home.dc.html#find-your-breed" style="text-decoration:none;padding:6px 0">Find your breed</a>
+          <a href="Gifts.dc.html" style="text-decoration:none;padding:6px 0">Gifts</a>
+          <a href="Home.dc.html#story" style="text-decoration:none;padding:6px 0">Our story</a>
+        </nav>
+      </sc-if>
+      <div style="flex:1"></div>
+      <button onClick="{{ openCart }}" aria-label="Open cart" style="display:flex;align-items:center;gap:9px;background:#17181C;color:#FAF7F2;border:none;border-radius:3px;padding:11px 18px;font-family:'Instrument Sans',sans-serif;font-size:14.5px;font-weight:600;cursor:pointer;min-height:44px" style-hover="background:#2B5BE3">
+        <span>Cart</span>
+        <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+          <span style="background:#FAF7F2;color:#17181C;border-radius:99px;font-size:12.5px;font-weight:700;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px">{{ cartCount }}</span>
+        </sc-if>
+      </button>
+    </div>
+  </header>
+
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="Menu" style="position:fixed;inset:0;z-index:90">
+      <div onClick="{{ closeAll }}" style="position:absolute;inset:0;background:rgba(23,24,28,0.45)"></div>
+      <div style="position:absolute;top:0;left:0;bottom:0;width:min(360px,88vw);background:#FAF7F2;padding:20px;display:flex;flex-direction:column;gap:4px;overflow:auto">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+          <img src="uploads/high-res/06-logo-blue-highres.png" alt="Kinu Supply logo" style="height:24px;width:auto">
+          <button onClick="{{ closeAll }}" aria-label="Close menu" style="background:none;border:1px solid #D8D2C6;border-radius:3px;width:44px;height:44px;font-size:16px;cursor:pointer">✕</button>
+        </div>
+        <a href="Shop.dc.html" style="text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:26px;padding:12px 4px;border-bottom:1px solid #E7E1D7">Shop</a>
+        <a href="Home.dc.html#find-your-breed" style="text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:26px;padding:12px 4px;border-bottom:1px solid #E7E1D7">Find your breed</a>
+        <a href="Shop.dc.html?type=T-shirt" style="text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:26px;padding:12px 4px;border-bottom:1px solid #E7E1D7">T-shirts</a>
+        <a href="Gifts.dc.html" style="text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:26px;padding:12px 4px;border-bottom:1px solid #E7E1D7">Gifts</a>
+        <a href="Home.dc.html#story" style="text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:26px;padding:12px 4px;border-bottom:1px solid #E7E1D7">Our story</a>
+        <a href="Home.dc.html#community" style="text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:26px;padding:12px 4px">Studio &amp; pop-ups</a>
+        <div style="margin-top:auto;padding-top:24px;font-size:13.5px;color:#6B675F;line-height:1.6">37 Tannery Lane #06-05, Singapore 347790<br>hello@kinu.supply · @kinu.supply</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ cartOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-label="Shopping cart" style="position:fixed;inset:0;z-index:100">
+      <div onClick="{{ closeAll }}" style="position:absolute;inset:0;background:rgba(23,24,28,0.45)"></div>
+      <div style="position:absolute;top:0;right:0;bottom:0;width:min(440px,100vw);background:#FAF7F2;display:flex;flex-direction:column;box-shadow:-12px 0 40px rgba(23,24,28,0.18)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #E7E1D7">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px">Your cart <span style="color:#6B675F;font-weight:500;font-size:15px">({{ cartCount }})</span></div>
+          <button onClick="{{ closeAll }}" aria-label="Close cart" style="background:none;border:1px solid #D8D2C6;border-radius:3px;width:44px;height:44px;font-size:16px;cursor:pointer" style-hover="border-color:#17181C">✕</button>
+        </div>
+        <sc-if value="{{ added }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="background:#DCE9D5;color:#2E5222;font-size:14px;font-weight:600;padding:10px 20px">Added to cart — {{ addedName }}</div>
+        </sc-if>
+        <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:14px 20px;border-bottom:1px solid #E7E1D7">
+            <div style="font-size:13.5px;color:#4A463F;margin-bottom:8px">{{ shipMsg }}</div>
+            <div style="height:6px;background:#E7E1D7;border-radius:99px;overflow:hidden">
+              <div style="height:100%;background:#2B5BE3;border-radius:99px;transition:width 0.35s;width:{{ shipPct }}"></div>
+            </div>
+          </div>
+          <div style="flex:1;overflow:auto;padding:6px 20px">
+            <sc-for list="{{ lines }}" as="l" hint-placeholder-count="2">
+              <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #EEE9DF">
+                <a href="{{ l.href }}" aria-label="{{ l.name }}" style="display:block;width:72px;height:92px;background-color:#F1EAE0;border-radius:3px;flex-shrink:0;background-image:{{ l.imgCss }};background-size:{{ l.bgSize }};background-position:center;background-repeat:no-repeat"></a>
+                <div style="flex:1;min-width:0">
+                  <div style="display:flex;justify-content:space-between;gap:10px">
+                    <a href="{{ l.href }}" style="font-size:14.5px;font-weight:600;text-decoration:none;line-height:1.35">{{ l.name }}</a>
+                    <span style="font-size:14.5px;font-weight:600;white-space:nowrap">{{ l.total }}</span>
+                  </div>
+                  <div style="font-size:13px;color:#6B675F;margin-top:3px">{{ l.meta }}</div>
+                  <div style="display:flex;align-items:center;gap:10px;margin-top:10px">
+                    <div style="display:inline-flex;align-items:center;border:1px solid #D8D2C6;border-radius:3px">
+                      <button onClick="{{ l.dec }}" aria-label="Decrease quantity" style="width:34px;height:32px;background:none;border:none;font-size:15px;cursor:pointer" style-hover="background:#F1EAE0">−</button>
+                      <span aria-live="polite" style="min-width:24px;text-align:center;font-size:14px;font-weight:600">{{ l.qty }}</span>
+                      <button onClick="{{ l.inc }}" aria-label="Increase quantity" style="width:34px;height:32px;background:none;border:none;font-size:15px;cursor:pointer" style-hover="background:#F1EAE0">+</button>
+                    </div>
+                    <button onClick="{{ l.remove }}" style="background:none;border:none;font-size:13px;color:#6B675F;text-decoration:underline;cursor:pointer;padding:6px 2px" style-hover="color:#D8442B">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ hasAddOns }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:16px 0 8px">
+                <div style="font-size:12.5px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#2B5BE3;margin-bottom:10px">Goes with your order</div>
+                <sc-for list="{{ addOns }}" as="s" hint-placeholder-count="2">
+                  <div style="display:flex;align-items:center;gap:12px;padding:8px 0">
+                    <div aria-hidden="true" style="width:48px;height:56px;background-color:#F1EAE0;border-radius:3px;flex-shrink:0;background-image:{{ s.imgCss }};background-size:{{ s.bgSize }};background-position:center;background-repeat:no-repeat"></div>
+                    <div style="flex:1;min-width:0">
+                      <div style="font-size:13.5px;font-weight:600;line-height:1.3">{{ s.name }}</div>
+                      <div style="font-size:13px;color:#6B675F">{{ s.price }}</div>
+                    </div>
+                    <button onClick="{{ s.add }}" style="background:none;border:1px solid #17181C;border-radius:3px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Instrument Sans',sans-serif;min-height:36px" style-hover="background:#2B5BE3;border-color:#2B5BE3;color:#FAF7F2">Add</button>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+          <div style="border-top:1px solid #E7E1D7;padding:16px 20px 20px;background:#FAF7F2">
+            <textarea value="{{ note }}" onChange="{{ setNote }}" placeholder="Add a note to your order (gift message, pickup name…)" rows="2" style="width:100%;box-sizing:border-box;border:1px solid #D8D2C6;border-radius:3px;padding:10px 12px;font-family:'Instrument Sans',sans-serif;font-size:13.5px;resize:none;background:#fff;color:#17181C"></textarea>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 4px">
+              <span style="font-size:15px;font-weight:600">Subtotal</span>
+              <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700">{{ subtotal }}</span>
+            </div>
+            <div style="font-size:13px;color:#6B675F;margin-bottom:14px">Shipping calculated at checkout · Free studio pickup at Tannery Lane</div>
+            <button onClick="{{ checkout }}" style="width:100%;background:#2B5BE3;color:#FAF7F2;border:none;border-radius:3px;padding:15px;font-family:'Instrument Sans',sans-serif;font-size:15.5px;font-weight:700;cursor:pointer;min-height:48px" style-hover="background:#1E48C4">Checkout</button>
+            <sc-if value="{{ msg }}" hint-placeholder-val="{{ false }}">
+              <div role="status" style="font-size:13px;color:#2B5BE3;text-align:center;margin-top:10px">{{ msg }}</div>
+            </sc-if>
+            <button onClick="{{ closeAll }}" style="width:100%;background:none;border:none;margin-top:10px;font-size:14px;font-weight:600;text-decoration:underline;cursor:pointer;color:#17181C;padding:8px" style-hover="color:#2B5BE3">Keep shopping</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;text-align:center">
+            <img src="uploads/high-res/31-sticker-beagle-in-bag.png" alt="Illustrated beagle peeking out of a bag" style="width:180px;height:auto">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px">Your cart is empty</div>
+            <div style="font-size:14.5px;color:#6B675F;max-width:260px;line-height:1.5">Every good bag deserves a dog in it. Start with a tee.</div>
+            <a href="Shop.dc.html" style="display:inline-block;background:#2B5BE3;color:#FAF7F2;text-decoration:none;border-radius:3px;padding:13px 26px;font-size:15px;font-weight:700" style-hover="background:#1E48C4;color:#FAF7F2">Shop T-shirts</a>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:420}}">
+class Component extends DCLogic {
+  state = { cart: [], cartOpen: false, navOpen: false, bar: true, added: null, note: '', msg: '', compact: false, isMobile: false };
+  componentDidMount() {
+    import('./kinu-data.js').then(m => { this.K = m; this.setState({ cart: m.getCart() }); });
+    this.onCart = e => {
+      const d = (e && e.detail) || {};
+      const next = { cart: this.K ? this.K.getCart() : [], msg: '' };
+      if (d.open) { next.cartOpen = true; next.navOpen = false; }
+      if (d.added) {
+        next.added = d.added;
+        clearTimeout(this._t);
+        this._t = setTimeout(() => this.setState({ added: null }), 2800);
+      }
+      this.setState(next);
+    };
+    window.addEventListener('kinu:cart', this.onCart);
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ cartOpen: false, navOpen: false }); };
+    window.addEventListener('keydown', this.onKey);
+    this.mq = window.matchMedia('(max-width:860px)');
+    this.onMq = () => this.setState({ isMobile: this.mq.matches });
+    this.onMq();
+    this.mq.addEventListener('change', this.onMq);
+    this.onScroll = () => { const c = window.scrollY > 28; if (c !== this.state.compact) this.setState({ compact: c }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('kinu:cart', this.onCart);
+    window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.mq) this.mq.removeEventListener('change', this.onMq);
+  }
+  componentDidUpdate() {
+    document.documentElement.style.overflow = (this.state.cartOpen || this.state.navOpen) ? 'hidden' : '';
+  }
+  renderVals() {
+    const K = this.K, cart = this.state.cart;
+    const lines = K ? cart.map(orig => {
+      const p = K.product(orig.id) || {};
+      return {
+        name: p.name || orig.id, imgCss: "url('" + p.img + "')", href: 'Product.dc.html?id=' + orig.id,
+        bgSize: p.contain ? '72%' : 'cover',
+        qty: orig.qty, total: K.money((p.price || 0) * orig.qty),
+        meta: [orig.variant, orig.size].filter(Boolean).join(' · ') || p.type,
+        inc: () => { orig.qty++; K.saveCart(cart); },
+        dec: () => { if (orig.qty > 1) { orig.qty--; K.saveCart(cart); } else K.saveCart(cart.filter(x => x !== orig)); },
+        remove: () => K.saveCart(cart.filter(x => x !== orig))
+      };
+    }) : [];
+    const sub = K ? cart.reduce((s, l) => s + ((K.product(l.id) || {}).price || 0) * l.qty, 0) : 0;
+    const remaining = Math.max(0, (K ? K.FREE_SHIP : 100) - sub);
+    const inCart = new Set(cart.map(l => l.id));
+    let addOns = [];
+    if (K && cart.length) {
+      const ids = [];
+      cart.forEach(l => ((K.product(l.id) || {}).addOns || []).forEach(id => { if (!inCart.has(id) && !ids.includes(id)) ids.push(id); }));
+      addOns = ids.slice(0, 3).map(id => {
+        const p = K.product(id);
+        return {
+          name: p.name, price: (p.from ? 'from ' : '') + K.money(p.price),
+          imgCss: "url('" + p.img + "')", bgSize: p.contain ? '75%' : 'cover',
+          add: () => K.addToCart({ id: p.id, variant: p.variants ? p.variants[0] : null, size: p.sizes ? 'M' : null })
+        };
+      });
+    }
+    const added = this.state.added;
+    const addedP = added && K ? K.product(added.id) : null;
+    return {
+      showBar: this.state.bar, dismissBar: () => this.setState({ bar: false }),
+      headerPad: this.state.compact ? '8px' : '16px',
+      isMobile: this.state.isMobile, isDesktop: !this.state.isMobile,
+      openNav: () => this.setState({ navOpen: true }),
+      openCart: () => this.setState({ cartOpen: true, msg: '' }),
+      closeAll: () => this.setState({ cartOpen: false, navOpen: false }),
+      navOpen: this.state.navOpen, cartOpen: this.state.cartOpen,
+      cartCount: cart.reduce((s, l) => s + l.qty, 0),
+      hasItems: cart.length > 0, isEmpty: cart.length === 0,
+      lines, subtotal: K ? K.money(sub) : 'S$0',
+      shipPct: Math.min(100, Math.round(sub / (K ? K.FREE_SHIP : 100) * 100)) + '%',
+      shipMsg: remaining > 0 ? 'You are ' + (K ? K.money(remaining) : '') + ' away from free Singapore shipping.' : 'You have unlocked free Singapore shipping.',
+      addOns, hasAddOns: addOns.length > 0,
+      added: !!added, addedName: addedP ? addedP.name : '',
+      note: this.state.note, setNote: e => this.setState({ note: e.target.value }),
+      msg: this.state.msg,
+      checkout: () => this.setState({ msg: 'Prototype ends here — production hands off to Shopify checkout.' })
+    };
+  }
+}
+</script>
+</body>
+</html>

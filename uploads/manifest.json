@@ -1,0 +1,367 @@
+{
+  "created": "2026-07-27",
+  "highRes": [
+    {
+      "file": "01-homepage-hero-kinu-dog-studio.jpg",
+      "category": "Hero / brand",
+      "use": "Desktop homepage hero or opening editorial image",
+      "width": 1728,
+      "height": 972,
+      "kb": 283,
+      "source": "https://kinu.supply/cdn/shop/files/KIN01851.jpg?v=1764229682&width=3000"
+    },
+    {
+      "file": "03-about-dog-lifestyle.jpg",
+      "category": "Lifestyle",
+      "use": "Brand world, community or values section",
+      "width": 3000,
+      "height": 2000,
+      "kb": 1391,
+      "source": "https://kinu.supply/cdn/shop/files/DSC09882.jpg?v=1764229071&width=3000"
+    },
+    {
+      "file": "04-about-pop-up-table.jpg",
+      "category": "Retail / events",
+      "use": "Market presence, community activation, credibility section",
+      "width": 1920,
+      "height": 1280,
+      "kb": 254,
+      "source": "https://kinu.supply/cdn/shop/files/GPF_setup_3.jpg?v=1764230320&width=3000"
+    },
+    {
+      "file": "05-about-dog-closeup.jpg",
+      "category": "Lifestyle",
+      "use": "Emotional support image for product/category storytelling",
+      "width": 1280,
+      "height": 1920,
+      "kb": 276,
+      "source": "https://kinu.supply/cdn/shop/files/DSCF2947DSCF2947.jpg?v=1764230264&width=3000"
+    },
+    {
+      "file": "06-logo-blue-highres.png",
+      "category": "Brand asset",
+      "use": "Prototype logo treatment, footer graphic, large brand mark",
+      "width": 1920,
+      "height": 620,
+      "kb": 51,
+      "source": "https://kinu.supply/cdn/shop/files/KINU_BLUE_LOGO.png?v=1763568080&width=3000"
+    },
+    {
+      "file": "07-poodle-park-lifestyle-front.jpg",
+      "category": "Product lifestyle / T-shirt",
+      "use": "Product card hover, product page gallery, best-seller module",
+      "width": 1280,
+      "height": 1920,
+      "kb": 251,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/DS303532.jpg?v=1779346475&width=3000"
+    },
+    {
+      "file": "08-poodle-park-lifestyle-back.jpg",
+      "category": "Product lifestyle / T-shirt",
+      "use": "Hero carousel, PDP gallery, social proof/product story",
+      "width": 1280,
+      "height": 1920,
+      "kb": 201,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/DS303633.jpg?v=1779346482&width=3000"
+    },
+    {
+      "file": "09-poodle-park-studio-front.jpg",
+      "category": "Product flat / T-shirt",
+      "use": "Collection product image, variant preview",
+      "width": 2160,
+      "height": 3840,
+      "kb": 339,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Poodle_Park.jpg?v=1776059571&width=3000"
+    },
+    {
+      "file": "10-poodle-park-studio-back.jpg",
+      "category": "Product flat / T-shirt",
+      "use": "PDP detail view, product card alternate image",
+      "width": 2160,
+      "height": 3840,
+      "kb": 197,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/PoodlePark.jpg?v=1776059615&width=3000"
+    },
+    {
+      "file": "11-dachshund-recreational-lifestyle-back.jpg",
+      "category": "Product lifestyle / T-shirt",
+      "use": "Homepage product storytelling, collection feature tile",
+      "width": 1080,
+      "height": 1440,
+      "kb": 112,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/1_7253380f-2068-428a-94b1-7a8cc446a191.jpg?v=1777455117&width=3000"
+    },
+    {
+      "file": "12-dachshund-recreational-lifestyle-detail.jpg",
+      "category": "Product lifestyle / T-shirt",
+      "use": "PDP gallery, social-style content section",
+      "width": 1080,
+      "height": 1440,
+      "kb": 92,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/2_821933fa-96b4-42b6-a363-81bb4c83ddc2.jpg?v=1777455116&width=3000"
+    },
+    {
+      "file": "13-dachshund-black-front.jpg",
+      "category": "Product flat / T-shirt",
+      "use": "Collection product image, product selector",
+      "width": 2160,
+      "height": 3840,
+      "kb": 139,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/31_Dachshund_RC_Black_Front.jpg?v=1762405754&width=3000"
+    },
+    {
+      "file": "14-dachshund-black-back.jpg",
+      "category": "Product flat / T-shirt",
+      "use": "PDP back-print detail, hover image",
+      "width": 2160,
+      "height": 3840,
+      "kb": 255,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/31_Dachshund_RC_Black_Back.jpg?v=1762405754&width=3000"
+    },
+    {
+      "file": "15-cat-club-lifestyle-front.jpg",
+      "category": "Product lifestyle / T-shirt",
+      "use": "Cat audience landing section, collection page hero",
+      "width": 1080,
+      "height": 1440,
+      "kb": 67,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/84.jpg?v=1777528615&width=3000"
+    },
+    {
+      "file": "16-cat-club-lifestyle-back.jpg",
+      "category": "Product lifestyle / T-shirt",
+      "use": "PDP gallery, product story, social tile",
+      "width": 1080,
+      "height": 1440,
+      "kb": 72,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/85.jpg?v=1777528615&width=3000"
+    },
+    {
+      "file": "17-cat-club-white-front.jpg",
+      "category": "Product flat / T-shirt",
+      "use": "Collection product image, cat club product card",
+      "width": 2160,
+      "height": 3840,
+      "kb": 108,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Catclub_White_front.jpg?v=1761749571&width=3000"
+    },
+    {
+      "file": "18-cat-club-black-back.jpg",
+      "category": "Product flat / T-shirt",
+      "use": "PDP back-print view, product detail panel",
+      "width": 2160,
+      "height": 3840,
+      "kb": 162,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Catclub_Black_Back.jpg?v=1761749571&width=3000"
+    },
+    {
+      "file": "19-encyclopedia-dog-stickers.jpg",
+      "category": "Collectibles / stickers",
+      "use": "Collectibles collection card, add-on upsell, gifting section",
+      "width": 1728,
+      "height": 2160,
+      "kb": 277,
+      "source": "https://kinu.supply/cdn/shop/files/encyclopedia_stickers.jpg?v=1749306363&width=3000"
+    },
+    {
+      "file": "20-cat-stickers-sheet.jpg",
+      "category": "Collectibles / stickers",
+      "use": "Cat collectibles collection card, cart recommendation",
+      "width": 1728,
+      "height": 2160,
+      "kb": 190,
+      "source": "https://kinu.supply/cdn/shop/files/cat_stickers.jpg?v=1749306316&width=3000"
+    },
+    {
+      "file": "21-dog-stickers-product-sheet-1.jpg",
+      "category": "Collectibles / stickers",
+      "use": "PDP hero image or bundle/add-on module",
+      "width": 1080,
+      "height": 1440,
+      "kb": 267,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/1_f9133ddd-c22a-4711-882b-ad70108dff90.jpg?v=1782444318&width=3000"
+    },
+    {
+      "file": "22-dog-stickers-product-sheet-2.jpg",
+      "category": "Collectibles / stickers",
+      "use": "PDP gallery alternate or sticker detail",
+      "width": 1080,
+      "height": 1440,
+      "kb": 38,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/2_05f40c9f-ce35-4cd4-88f8-b5aced5861dc.jpg?v=1782444318&width=3000"
+    },
+    {
+      "file": "23-foldable-dog-lover-bag-lifestyle.jpg",
+      "category": "Product lifestyle / bag",
+      "use": "Accessories collection image, cart upsell, gift bundle",
+      "width": 3000,
+      "height": 4500,
+      "kb": 951,
+      "source": "https://kinu.supply/cdn/shop/files/DS302121.jpg?v=1775794074&width=3000"
+    },
+    {
+      "file": "24-foldable-dog-lover-bag-detail.jpg",
+      "category": "Product lifestyle / bag",
+      "use": "Accessory PDP/gallery detail image",
+      "width": 3000,
+      "height": 4500,
+      "kb": 1143,
+      "source": "https://kinu.supply/cdn/shop/files/DS302124.jpg?v=1775794074&width=3000"
+    },
+    {
+      "file": "25-foldable-cat-lover-bag-lifestyle.jpg",
+      "category": "Product lifestyle / bag",
+      "use": "Cat accessories collection image, gift/add-on module",
+      "width": 1440,
+      "height": 2160,
+      "kb": 187,
+      "source": "https://kinu.supply/cdn/shop/files/DSC04887.jpg?v=1784220904&width=3000"
+    },
+    {
+      "file": "26-foldable-cat-lover-bag-detail.jpg",
+      "category": "Product lifestyle / bag",
+      "use": "Accessory PDP/gallery detail image",
+      "width": 1620,
+      "height": 2160,
+      "kb": 241,
+      "source": "https://kinu.supply/cdn/shop/files/DSC04590.jpg?v=1784220905&width=3000"
+    },
+    {
+      "file": "28-sticker-sheltie-sheep.png",
+      "category": "Transparent sticker asset",
+      "use": "Prototype decoration, breed navigation icon, product detail badge",
+      "width": 1600,
+      "height": 2263,
+      "kb": 222,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Sheltie_black_with_sheep.png?v=1763540575&width=1600"
+    },
+    {
+      "file": "31-sticker-beagle-in-bag.png",
+      "category": "Transparent sticker asset",
+      "use": "Breed navigation, sticker detail, playful product selector",
+      "width": 1600,
+      "height": 1061,
+      "kb": 487,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/3_Beagle_in_Bag_b9236d1c-3cab-44c5-89cf-54a2a2920b0c.png?v=1782444480&width=1600"
+    },
+    {
+      "file": "32-sticker-border-collie.png",
+      "category": "Transparent sticker asset",
+      "use": "Breed navigation, category icon, product detail accent",
+      "width": 1181,
+      "height": 1181,
+      "kb": 144,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/9_Border_Collie_Black.png?v=1782444358&width=1600"
+    },
+    {
+      "file": "33-sticker-dachshund-tennis.png",
+      "category": "Transparent sticker asset",
+      "use": "Dachshund club detail, bundle accent, quiz/result badge",
+      "width": 1600,
+      "height": 1228,
+      "kb": 327,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Dachshund_RC_Tennis_Brown_7a67fb0c-0e48-48e8-9e6e-73a0aac28ea3.png?v=1782444799&width=1600"
+    },
+    {
+      "file": "34-sticker-golden-sitting.png",
+      "category": "Transparent sticker asset",
+      "use": "Breed navigation, community module, dog club selector",
+      "width": 1181,
+      "height": 1181,
+      "kb": 187,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/48_Goldie_Sitting_Down.png?v=1782444988&width=1600"
+    },
+    {
+      "file": "35-sticker-husky-frisbee.png",
+      "category": "Transparent sticker asset",
+      "use": "Breed navigation, lifestyle/product accent",
+      "width": 1181,
+      "height": 1181,
+      "kb": 297,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Husky_frisbee_d555b035-feda-4fc5-af82-46f98de85ba4.png?v=1782445035&width=1600"
+    },
+    {
+      "file": "36-sticker-pomeranian-sitting.png",
+      "category": "Transparent sticker asset",
+      "use": "Breed navigation, sticker pack detail",
+      "width": 1181,
+      "height": 1181,
+      "kb": 99,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/65_Pom_Sitting_Black.png?v=1782445168&width=1600"
+    },
+    {
+      "file": "37-sticker-poodle-trio.png",
+      "category": "Transparent sticker asset",
+      "use": "Poodle collection accent, breed filter, gift section",
+      "width": 1181,
+      "height": 1181,
+      "kb": 251,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Poodle_trio.png?v=1782445249&width=1600"
+    },
+    {
+      "file": "38-sticker-samoyed.png",
+      "category": "Transparent sticker asset",
+      "use": "Breed navigation, product detail badge",
+      "width": 1181,
+      "height": 1181,
+      "kb": 131,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Samoyed_1_24abadcf-0bcb-40b5-9e99-4bbd80621bc8.png?v=1782445381&width=1600"
+    },
+    {
+      "file": "39-sticker-shiba-sitting.png",
+      "category": "Transparent sticker asset",
+      "use": "Breed navigation, product selector",
+      "width": 1181,
+      "height": 1181,
+      "kb": 284,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/92_Shiba_Sitting.png?v=1782445447&width=1600"
+    },
+    {
+      "file": "40-sticker-westie-sitting.png",
+      "category": "Transparent sticker asset",
+      "use": "Breed navigation, product selector",
+      "width": 1600,
+      "height": 1792,
+      "kb": 325,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/100_Westie_Sitting.png?v=1782445492&width=1600"
+    }
+  ],
+  "smallUseOnly": [
+    {
+      "file": "02-about-community-square.jpg",
+      "category": "Brand story",
+      "use": "About section, founder/community story, mobile hero crop",
+      "width": 945,
+      "height": 945,
+      "kb": 67,
+      "source": "https://kinu.supply/cdn/shop/files/WhatsApp_Image_2025-11-27_at_15.53.04.jpg?v=1764230031&width=3000"
+    },
+    {
+      "file": "27-sticker-pomeranian-balloon.png",
+      "category": "Transparent sticker asset",
+      "use": "Prototype decoration, sticker pack detail, quiz result badge",
+      "width": 827,
+      "height": 1106,
+      "kb": 163,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Pomeranian_Balloon_Tricolor.png?v=1763093603&width=1600"
+    },
+    {
+      "file": "29-sticker-bichon-sitting.jpg",
+      "category": "Sticker asset",
+      "use": "Sticker gallery or breed selector tile",
+      "width": 850,
+      "height": 850,
+      "kb": 48,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Bichon_sitting.jpg?v=1775065563&width=1600"
+    },
+    {
+      "file": "30-sticker-yorkie-look-up.jpg",
+      "category": "Sticker asset",
+      "use": "Sticker gallery or breed selector tile",
+      "width": 850,
+      "height": 850,
+      "kb": 67,
+      "source": "https://cdn.shopify.com/s/files/1/0725/8298/8074/files/Yorkie_look_up.jpg?v=1775065638&width=1600"
+    }
+  ]
+}
